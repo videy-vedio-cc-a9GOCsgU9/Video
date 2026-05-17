@@ -1,225 +1,416 @@
-<!--DOCTYPE html-->
-
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <script src="https://laxativethem.com/fc/ba/5a/fcba5ac3fdd278beded7b377c8e47711.js"></script>
-
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>gofile.io</title>
-
-  <!-- ===== ADSTERRA - SOCIAL BAR (সব পেজে অটো দেখায়) ===== -->
-  <!-- আপনার Adsterra Social Bar কোড এখানে বসান -->
-  <!-- <script async="async" data-cfasync="false" src="//YOUR_ADSTERRA_SOCIAL_BAR_SCRIPT.js"></script> -->
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GoFile — File Host</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #111827;
-      color: #fff;
+    :root {
+      --bg-primary:   #0b0f1a;
+      --bg-card:      #111827;
+      --bg-hover:     #1a2235;
+      --border:       rgba(255,255,255,0.07);
+      --accent:       #ef4444;
+      --accent-glow:  rgba(239,68,68,0.25);
+      --text-primary: #f1f5f9;
+      --text-muted:   #64748b;
+      --text-dim:     #94a3b8;
     }
-    /* ===== HEADER ===== */
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Syne', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(239,68,68,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(99,102,241,0.04) 0%, transparent 50%);
+    }
+
+    /* ── HEADER ── */
     .site-header {
       position: sticky;
       top: 0;
-      z-index: 999;
-      background: linear-gradient(135deg, #0f172a, #111827);
-      padding: 14px 18px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .site-logo {
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      color: #e5e7eb;
-    }
-    .site-logo span {
-      color: #ef4444;
-      font-weight: 900;
+      z-index: 100;
+      background: rgba(11,15,26,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    .ad-banner {
-      text-align: center;
-      background: #1f2937;
-      padding: 10px;
+    .site-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: -0.5px;
+      color: var(--text-primary);
     }
-    .ad-banner img {
-      max-width: 100%;
-      border-radius: 6px;
+    .site-logo span { color: var(--accent); }
+
+    .header-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
     }
-    .card {
-      background: #1f2937;
-      margin: 10px;
-      border-radius: 6px;
-      padding: 10px;
+
+    /* ── MAIN CONTENT ── */
+    .main-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 16px 80px;
     }
-    .folder {
+
+    .section-title {
+      font-size: 13px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-muted);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
       display: flex;
       align-items: center;
-      margin-bottom: 10px;
-    }
-    .folder-icon {
-      font-size: 24px;
-      margin-right: 10px;
-    }
-    .file {
-      display: flex;
-      align-items: center;
-      background: #111827;
-      margin: 10px 0;
-      border-radius: 6px;
-      padding: 10px;
-      cursor: pointer;
-    }
-    .file img {
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
-      border-radius: 4px;
-      margin-right: 10px;
-    }
-    .file-info {
-      flex-grow: 1;
-    }
-    .file-info h4 {
-      margin: 0;
-      font-size: 14px;
-    }
-    .file-info p {
-      margin: 0;
-      font-size: 16px;
-      font-weight: bold;
-      color: #fff;
-    }
-    .actions {
-      display: flex;
       gap: 10px;
     }
-    .actions button {
-      background: #374151;
-      border: none;
-      color: white;
-      padding: 6px 10px;
-      border-radius: 4px;
-      pointer-events: none;
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
     }
 
-    /* ===== ADSTERRA AD CONTAINERS ===== */
-    .adsterra-banner {
-      text-align: center;
-      margin: 10px auto;
+    /* ── GRID ── */
+    #cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 14px;
+    }
+
+    /* ── CARD ── */
+    .file-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      animation: fadeUp 0.4s ease both;
+    }
+    .file-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(239,68,68,0.35);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4), 0 0 0 1px rgba(239,68,68,0.1);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .card-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, #1a2235 0%, #0f172a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
       overflow: hidden;
     }
+    .card-thumb::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 40%, rgba(239,68,68,0.08), transparent 60%);
+    }
+    .card-thumb-icon {
+      font-size: 36px;
+      opacity: 0.6;
+      position: relative;
+      z-index: 1;
+    }
+    .card-thumb-label {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      background: rgba(239,68,68,0.2);
+      color: #fca5a5;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(239,68,68,0.3);
+      letter-spacing: 0.5px;
+    }
+
+    .card-body {
+      padding: 14px 16px;
+    }
+    .card-name {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 4px;
+    }
+    .card-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .btn-play {
+      flex: 1;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 7px;
+      padding: 8px 0;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .btn-play:hover {
+      background: #dc2626;
+      box-shadow: 0 0 16px var(--accent-glow);
+    }
+    .btn-open {
+      background: rgba(255,255,255,0.06);
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 8px 12px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-open:hover {
+      background: rgba(255,255,255,0.1);
+      color: var(--text-primary);
+    }
+
+    /* ── STATES ── */
+    .state-box {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      gap: 16px;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      text-align: center;
+    }
+    .state-icon { font-size: 40px; opacity: 0.4; }
+
+    .loader {
+      width: 32px;
+      height: 32px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .error-box {
+      background: rgba(239,68,68,0.07);
+      border: 1px solid rgba(239,68,68,0.2);
+      border-radius: 10px;
+      padding: 20px 28px;
+      color: #fca5a5;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      line-height: 1.7;
+      max-width: 480px;
+      width: 100%;
+    }
+    .error-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    /* ── STAGGER DELAY ── */
+    .file-card:nth-child(1)  { animation-delay: 0.05s; }
+    .file-card:nth-child(2)  { animation-delay: 0.10s; }
+    .file-card:nth-child(3)  { animation-delay: 0.15s; }
+    .file-card:nth-child(4)  { animation-delay: 0.20s; }
+    .file-card:nth-child(5)  { animation-delay: 0.25s; }
+    .file-card:nth-child(6)  { animation-delay: 0.30s; }
+    .file-card:nth-child(7)  { animation-delay: 0.35s; }
+    .file-card:nth-child(8)  { animation-delay: 0.40s; }
+    .file-card:nth-child(9)  { animation-delay: 0.45s; }
+    .file-card:nth-child(10) { animation-delay: 0.50s; }
   </style>
-
 </head>
-
 <body>
 
-  <!-- HEADER -->
-  <div class="site-header">
-    <div class="site-logo">
-      Gofile <span>X</span>
-    </div>
-  </div>
+  <header class="site-header">
+    <div class="site-logo">Go<span>X</span></div>
+    <div class="header-badge">FILE HOST</div>
+  </header>
 
-  <!-- ===== ADSTERRA BANNER AD - TOP (728x90 বা 320x50 মোবাইল) ===== -->
-  <div class="adsterra-banner"> <script>
-  atOptions = {
-    'key' : '3c9726032b95e0f3ad8e9120563f7223',
-    'format' : 'iframe',
-    'height' : 90,
-    'width' : 728,
-    'params' : {}
-  };
-</script>
-<script src="https://laxativethem.com/3c9726032b95e0f3ad8e9120563f7223/invoke.js"></script>
-
-    <!-- আপনার Adsterra Banner কোড এখানে বসান -->
-    <!--
-    <script async="async" data-cfasync="false" src="//YOUR_ADSTERRA_BANNER_SCRIPT.js"></script>
-    -->
-  </div>
-
-  <!-- VIDEO -->
-  <video
-    src="https://cdn.videy.co/n9L2Emde1.mp4"
-    autoplay
-    muted
-    playsinline
-    controls
-    style="width:100%;height:auto;max-height:100vh;">
-  </video>
-
-  <!-- ===== ADSTERRA NATIVE AD (ভিডিওর নিচে) ===== -->
-  <div class="adsterra-banner">
-    <!-- আপনার Adsterra Native Banner কোড এখানে বসান -->
-    <!--
-    <script async="async" data-cfasync="false" src="//YOUR_ADSTERRA_NATIVE_SCRIPT.js"></script>
-    -->
-  </div>
-
-  <!-- Folder Card -->
-  <div class="card">
-    <div class="folder">
-      <div class="folder-icon">📁</div>
-      <div>
-        <strong>zpcLxb</strong><br>
-        <small>7/02/2026, 17:09:18</small>
+  <main class="main-wrap">
+    <div class="section-title">All Files</div>
+    <div id="cards-container">
       </div>
-    </div>
+  </main>
 
-    <!-- FILE 1 -->
-    <div class="file clickable">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEB9M7K3-_TBCTICxWi8Ww9pJrgt-K6Q5_oKy5WJ_1Fw&amp;s=10">
-      <div class="file-info">
-        <h4>1.MOV</h4>
-        <p>70.9 MB &#8212; 8/02/2026, 17:09:42</p>
-      </div>
-      <div class="actions">
-        <button>&#9654;</button>
-        <button>&#11015;</button>
-      </div>
-    </div>
+  <script>
+    /* ============================================================
+       ▶  CONFIG — Change these two values only
+    ============================================================ */
+    const GITHUB_USERNAME = "videy-vedio-cc-a9GOCsgU9";   // আপনার আসল ইউজারনেম বসানো হয়েছে
+    const GITHUB_REPO     = "Video";                  // আপনার কানেক্টেড প্রজেক্ট ফোল্ডারের নাম বসানো হয়েছে
+    /* ============================================================ */
 
-    <!-- ===== ADSTERRA IN-CONTENT AD (ফাইলের মাঝে) ===== -->
-    <div class="adsterra-banner">
-      <!-- আপনার Adsterra In-content কোড এখানে বসান -->
-      <!--
-      <script async="async" data-cfasync="false" src="//YOUR_ADSTERRA_INCONTENT_SCRIPT.js"></script>
-      -->
-    </div>
+    const FOLDER_PATH = "d";   // sub-folder inside repo
+    const API_URL     = `https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO}/contents/${FOLDER_PATH}`;
 
-    <!-- FILE 2 -->
-    <div class="file clickable">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6eU-2tBr90COHzG7Mtpx9Zo4wFL3TJ1J2guc9IBwEcA&amp;s=10">
-      <div class="file-info">
-        <h4>2.MOV</h4>
-        <p>46.4 MB &#8212; 17/09/2025, 17:09:52</p>
-      </div>
-      <div class="actions">
-        <button>&#9654;</button>
-        <button>&#11015;</button>
-      </div>
-    </div>
+    const container = document.getElementById("cards-container");
 
-  </div>
+    /* ── Helpers ── */
+    function showLoading() {
+      container.innerHTML = `
+        <div class="state-box">
+          <div class="loader"></div>
+          <span>Fetching files&hellip;</span>
+        </div>`;
+    }
 
-  <!-- ===== ADSTERRA BOTTOM BANNER ===== -->
-  <div class="adsterra-banner"> <script async="async" data-cfasync="false" src="https://laxativethem.com/b6fbd0cf456a34c73428eb92133fbf35/invoke.js"></script>
-<div id="container-b6fbd0cf456a34c73428eb92133fbf35"></div>
+    function showError(msg) {
+      container.innerHTML = `
+        <div class="state-box">
+          <div class="error-box">
+            <div class="error-title">⚠ Failed to load files</div>
+            ${msg}
+          </div>
+        </div>`;
+    }
 
-    <!-- আপনার Adsterra Bottom Banner কোড এখানে বসান -->
-    <!--
-    <script async="async" data-cfasync="false" src="//YOUR_ADSTERRA_BOTTOM_SCRIPT.js"></script>
-    -->
-  </div>
+    function showEmpty() {
+      container.innerHTML = `
+        <div class="state-box">
+          <div class="state-icon">📂</div>
+          <span>No folders found inside <code>/${FOLDER_PATH}</code></span>
+        </div>`;
+    }
+
+    /* ── Build one card ── */
+    function createCard(folderName) {
+      const url  = `/d/${folderName}`;
+      const card = document.createElement("div");
+      card.className = "file-card";
+      card.innerHTML = `
+        <div class="card-thumb">
+          <span class="card-thumb-icon">🎬</span>
+          <span class="card-thumb-label">FOLDER</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">${folderName}</div>
+          <div class="card-meta">/d/${folderName}</div>
+          <div class="card-actions">
+            <button class="btn-play">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                <path d="M2 1.5l8 4.5-8 4.5V1.5z"/>
+              </svg>
+              Open
+            </button>
+            <button class="btn-open" title="Open in new tab">↗</button>
+          </div>
+        </div>`;
+
+      /* Whole card click */
+      card.addEventListener("click", (e) => {
+        if (e.target.closest(".btn-open")) return;
+        window.open(url, "_blank");
+      });
+
+      /* Arrow button */
+      card.querySelector(".btn-open").addEventListener("click", (e) => {
+        e.stopPropagation();
+        window.open(url, "_blank");
+      });
+
+      return card;
+    }
+
+    /* ── Fetch from GitHub API ── */
+    async function loadFolders() {
+      showLoading();
+      try {
+        const res = await fetch(API_URL, {
+          headers: { "Accept": "application/vnd.github+json" }
+        });
+
+        if (res.status === 404) {
+          showError(`Repository or folder not found.<br>
+            Check that <code>${GITHUB_USERNAME}/${GITHUB_REPO}</code> is public and the <code>${FOLDER_PATH}/</code> folder exists.`);
+          return;
+        }
+        if (res.status === 403) {
+          showError("GitHub API rate limit exceeded. Try again in a minute, or add a personal access token.");
+          return;
+        }
+        if (!res.ok) {
+          showError(`GitHub API returned HTTP ${res.status}.`);
+          return;
+        }
+
+        const items = await res.json();
+
+        /* Filter only directories */
+        const folders = items.filter(i => i.type === "dir");
+
+        if (folders.length === 0) {
+          showEmpty();
+          return;
+        }
+
+        container.innerHTML = "";
+        folders.forEach(folder => {
+          container.appendChild(createCard(folder.name));
+        });
+
+      } catch (err) {
+        showError(`Network error: ${err.message}`);
+      }
+    }
+
+    /* ── Run ── */
+    loadFolders();
+  </script>
 
 </body>
-<script src="https://laxativethem.com/a6/a1/58/a6a158955f4235f27bbcabd745f08ac5.js"></script>
-
-
 </html>
