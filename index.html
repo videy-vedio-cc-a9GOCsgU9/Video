@@ -106,17 +106,11 @@
       overflow: hidden;
       cursor: pointer;
       transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-      animation: fadeUp 0.4s ease both;
     }
     .file-card:hover {
       transform: translateY(-3px);
       border-color: rgba(239,68,68,0.35);
       box-shadow: 0 8px 30px rgba(0,0,0,0.4), 0 0 0 1px rgba(239,68,68,0.1);
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
     }
 
     .card-thumb {
@@ -225,51 +219,6 @@
       background: rgba(255,255,255,0.1);
       color: var(--text-primary);
     }
-
-    /* ── STATES ── */
-    .state-box {
-      grid-column: 1 / -1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 60px 20px;
-      gap: 16px;
-      color: var(--text-muted);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      text-align: center;
-    }
-    .state-icon { font-size: 40px; opacity: 0.4; }
-
-    .loader {
-      width: 32px;
-      height: 32px;
-      border: 2px solid var(--border);
-      border-top-color: var(--accent);
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .error-box {
-      background: rgba(239,68,68,0.07);
-      border: 1px solid rgba(239,68,68,0.2);
-      border-radius: 10px;
-      padding: 20px 28px;
-      color: #fca5a5;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      line-height: 1.7;
-      max-width: 480px;
-      width: 100%;
-    }
-    .error-title {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 8px;
-    }
   </style>
 </head>
 <body>
@@ -282,133 +231,135 @@
   <main class="main-wrap">
     <div class="section-title">All Files</div>
     <div id="cards-container">
-      </div>
-  </main>
-
-  <script>
-    /* ============================================================
-       ▶  CONFIG — Change these two values only
-    ============================================================ */
-    const GITHUB_USERNAME = "videy-vedio-cc-a9GOCsgU9";   
-    const GITHUB_REPO     = "Video";                  
-    /* ============================================================ */
-
-    const FOLDER_PATH = "d";   
-    const API_URL     = `https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO}/contents/${FOLDER_PATH}`;
-
-    const container = document.getElementById("cards-container");
-
-    /* ── Helpers ── */
-    function showLoading() {
-      container.innerHTML = `
-        <div class="state-box">
-          <div class="loader"></div>
-          <span>Fetching files&hellip;</span>
-        </div>`;
-    }
-
-    function showError(msg) {
-      container.innerHTML = `
-        <div class="state-box">
-          <div class="error-box">
-            <div class="error-title">⚠ Failed to load files</div>
-            ${msg}
-          </div>
-        </div>`;
-    }
-
-    function showEmpty() {
-      container.innerHTML = `
-        <div class="state-box">
-          <div class="state-icon">📂</div>
-          <span>No folders found inside <code>/${FOLDER_PATH}</code></span>
-        </div>`;
-    }
-
-    /* ── Build one card ── */
-    function createCard(folderName) {
-      const url  = `/d/${folderName}`;
-      const card = document.createElement("div");
-      card.className = "file-card";
       
-      // ছবির ট্রিক: ফোল্ডারের ভেতরের থাম্বনেইল হিসেবে আমরা একটা ডিফল্ট আকর্ষণীয় ইমেজ সেট করে দিচ্ছি
-      card.innerHTML = `
+      <div class="file-card" onclick="window.open('/d/feSrd3', '_blank')">
         <div class="card-thumb">
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEB9M7K3-_TBCTICxWi8Ww9pJrgt-K6Q5_oKy5WJ_1Fw&amp;s=10" alt="thumbnail">
-          <span class="card-thumb-icon">🎬</span>
-          <span class="card-thumb-label">FOLDER</span>
+          <span class="card-thumb-icon">🎬</span><span class="card-thumb-label">FOLDER</span>
         </div>
         <div class="card-body">
-          <div class="card-name">${folderName}</div>
-          <div class="card-meta">/d/${folderName}</div>
+          <div class="card-name">feSrd3</div><div class="card-meta">/d/feSrd3</div>
           <div class="card-actions">
-            <button class="btn-play">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
-                <path d="M2 1.5l8 4.5-8 4.5V1.5z"/>
-              </svg>
-              Open
-            </button>
-            <button class="btn-open" title="Open in new tab">↗</button>
+            <button class="btn-play">Open</button>
+            <button class="btn-open">↗</button>
           </div>
-        </div>`;
+        </div>
+      </div>
 
-      /* Whole card click */
-      card.addEventListener("click", (e) => {
-        if (e.target.closest(".btn-open")) return;
-        window.open(url, "_blank");
-      });
+      <div class="file-card" onclick="window.open('/d/Bg5jXd', '_blank')">
+        <div class="card-thumb">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEB9M7K3-_TBCTICxWi8Ww9pJrgt-K6Q5_oKy5WJ_1Fw&amp;s=10" alt="thumbnail">
+          <span class="card-thumb-icon">🎬</span><span class="card-thumb-label">FOLDER</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Bg5jXd</div><div class="card-meta">/d/Bg5jXd</div>
+          <div class="card-actions">
+            <button class="btn-play">Open</button>
+            <button class="btn-open">↗</button>
+          </div>
+        </div>
+      </div>
 
-      /* Arrow button */
-      card.querySelector(".btn-open").addEventListener("click", (e) => {
-        e.stopPropagation();
-        window.open(url, "_blank");
-      });
+      <div class="file-card" onclick="window.open('/d/Fhr7qf', '_blank')">
+        <div class="card-thumb">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEB9M7K3-_TBCTICxWi8Ww9pJrgt-K6Q5_oKy5WJ_1Fw&amp;s=10" alt="thumbnail">
+          <span class="card-thumb-icon">🎬</span><span class="card-thumb-label">FOLDER</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Fhr7qf</div><div class="card-meta">/d/Fhr7qf</div>
+          <div class="card-actions">
+            <button class="btn-play">Open</button>
+            <button class="btn-open">↗</button>
+          </div>
+        </div>
+      </div>
 
-      return card;
-    }
+      <div class="file-card" onclick="window.open('/d/GtuLLf', '_blank')">
+        <div class="card-thumb">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEB9M7K3-_TBCTICxWi8Ww9pJrgt-K6Q5_oKy5WJ_1Fw&amp;s=10" alt="thumbnail">
+          <span class="card-thumb-icon">🎬</span><span class="card-thumb-label">FOLDER</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">GtuLLf</div><div class="card-meta">/d/GtuLLf</div>
+          <div class="card-actions">
+            <button class="btn-play">Open</button>
+            <button class="btn-open">↗</button>
+          </div>
+        </div>
+      </div>
 
-    /* ── Fetch from GitHub API ── */
-    async function loadFolders() {
-      showLoading();
-      try {
-        const res = await fetch(API_URL, {
-          headers: { "Accept": "application/vnd.github+json" }
-        });
+      <div class="file-card" onclick="window.open('/d/Hkui7E', '_blank')">
+        <div class="card-thumb">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEB9M7K3-_TBCTICxWi8Ww9pJrgt-K6Q5_oKy5WJ_1Fw&amp;s=10" alt="thumbnail">
+          <span class="card-thumb-icon">🎬</span><span class="card-thumb-label">FOLDER</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Hkui7E</div><div class="card-meta">/d/Hkui7E</div>
+          <div class="card-actions">
+            <button class="btn-play">Open</button>
+            <button class="btn-open">↗</button>
+          </div>
+        </div>
+      </div>
 
-        if (res.status === 404) {
-          showError(`Repository or folder not found.<br> Check that the folder exists.`);
-          return;
-        }
-        if (res.status === 403) {
-          showError("GitHub API rate limit exceeded. Try again in a minute.");
-          return;
-        }
-        if (!res.ok) {
-          showError(`GitHub API returned HTTP ${res.status}.`);
-          return;
-        }
+      <div class="file-card" onclick="window.open('/d/NknJex', '_blank')">
+        <div class="card-thumb">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEB9M7K3-_TBCTICxWi8Ww9pJrgt-K6Q5_oKy5WJ_1Fw&amp;s=10" alt="thumbnail">
+          <span class="card-thumb-icon">🎬</span><span class="card-thumb-label">FOLDER</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">NknJex</div><div class="card-meta">/d/NknJex</div>
+          <div class="card-actions">
+            <button class="btn-play">Open</button>
+            <button class="btn-open">↗</button>
+          </div>
+        </div>
+      </div>
 
-        const items = await res.json();
-        const folders = items.filter(i => i.type === "dir");
+      <div class="file-card" onclick="window.open('/d/Tcr4nm', '_blank')">
+        <div class="card-thumb">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEB9M7K3-_TBCTICxWi8Ww9pJrgt-K6Q5_oKy5WJ_1Fw&amp;s=10" alt="thumbnail">
+          <span class="card-thumb-icon">🎬</span><span class="card-thumb-label">FOLDER</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Tcr4nm</div><div class="card-meta">/d/Tcr4nm</div>
+          <div class="card-actions">
+            <button class="btn-play">Open</button>
+            <button class="btn-open">↗</button>
+          </div>
+        </div>
+      </div>
 
-        if (folders.length === 0) {
-          showEmpty();
-          return;
-        }
+      <div class="file-card" onclick="window.open('/d/Tjs2ia', '_blank')">
+        <div class="card-thumb">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEB9M7K3-_TBCTICxWi8Ww9pJrgt-K6Q5_oKy5WJ_1Fw&amp;s=10" alt="thumbnail">
+          <span class="card-thumb-icon">🎬</span><span class="card-thumb-label">FOLDER</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Tjs2ia</div><div class="card-meta">/d/Tjs2ia</div>
+          <div class="card-actions">
+            <button class="btn-play">Open</button>
+            <button class="btn-open">↗</button>
+          </div>
+        </div>
+      </div>
 
-        container.innerHTML = "";
-        folders.forEach(folder => {
-          container.appendChild(createCard(folder.name));
-        });
+      <div class="file-card" onclick="window.open('/d/Vd7xBe', '_blank')">
+        <div class="card-thumb">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEB9M7K3-_TBCTICxWi8Ww9pJrgt-K6Q5_oKy5WJ_1Fw&amp;s=10" alt="thumbnail">
+          <span class="card-thumb-icon">🎬</span><span class="card-thumb-label">FOLDER</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Vd7xBe</div><div class="card-meta">/d/Vd7xBe</div>
+          <div class="card-actions">
+            <button class="btn-play">Open</button>
+            <button class="btn-open">↗</button>
+          </div>
+        </div>
+      </div>
 
-      } catch (err) {
-        showError(`Network error: ${err.message}`);
-      }
-    }
-
-    /* ── Run ── */
-    loadFolders();
-  </script>
+    </div>
+  </main>
 
 </body>
 </html>
