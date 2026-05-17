@@ -129,17 +129,26 @@
       position: relative;
       overflow: hidden;
     }
+    .card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
     .card-thumb::before {
       content: '';
       position: absolute;
       inset: 0;
       background: radial-gradient(circle at 30% 40%, rgba(239,68,68,0.08), transparent 60%);
+      z-index: 2;
     }
     .card-thumb-icon {
       font-size: 36px;
       opacity: 0.6;
       position: relative;
-      z-index: 1;
+      z-index: 0;
     }
     .card-thumb-label {
       position: absolute;
@@ -153,6 +162,7 @@
       border-radius: 4px;
       border: 1px solid rgba(239,68,68,0.3);
       letter-spacing: 0.5px;
+      z-index: 3;
     }
 
     .card-body {
@@ -260,18 +270,6 @@
       color: var(--accent);
       margin-bottom: 8px;
     }
-
-    /* ── STAGGER DELAY ── */
-    .file-card:nth-child(1)  { animation-delay: 0.05s; }
-    .file-card:nth-child(2)  { animation-delay: 0.10s; }
-    .file-card:nth-child(3)  { animation-delay: 0.15s; }
-    .file-card:nth-child(4)  { animation-delay: 0.20s; }
-    .file-card:nth-child(5)  { animation-delay: 0.25s; }
-    .file-card:nth-child(6)  { animation-delay: 0.30s; }
-    .file-card:nth-child(7)  { animation-delay: 0.35s; }
-    .file-card:nth-child(8)  { animation-delay: 0.40s; }
-    .file-card:nth-child(9)  { animation-delay: 0.45s; }
-    .file-card:nth-child(10) { animation-delay: 0.50s; }
   </style>
 </head>
 <body>
@@ -291,11 +289,11 @@
     /* ============================================================
        ▶  CONFIG — Change these two values only
     ============================================================ */
-    const GITHUB_USERNAME = "videy-vedio-cc-a9GOCsgU9";   // আপনার আসল ইউজারনেম বসানো হয়েছে
-    const GITHUB_REPO     = "Video";                  // আপনার কানেক্টেড প্রজেক্ট ফোল্ডারের নাম বসানো হয়েছে
+    const GITHUB_USERNAME = "videy-vedio-cc-a9GOCsgU9";   
+    const GITHUB_REPO     = "Video";                  
     /* ============================================================ */
 
-    const FOLDER_PATH = "d";   // sub-folder inside repo
+    const FOLDER_PATH = "d";   
     const API_URL     = `https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO}/contents/${FOLDER_PATH}`;
 
     const container = document.getElementById("cards-container");
@@ -332,8 +330,11 @@
       const url  = `/d/${folderName}`;
       const card = document.createElement("div");
       card.className = "file-card";
+      
+      // ছবির ট্রিক: ফোল্ডারের ভেতরের থাম্বনেইল হিসেবে আমরা একটা ডিফল্ট আকর্ষণীয় ইমেজ সেট করে দিচ্ছি
       card.innerHTML = `
         <div class="card-thumb">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEB9M7K3-_TBCTICxWi8Ww9pJrgt-K6Q5_oKy5WJ_1Fw&amp;s=10" alt="thumbnail">
           <span class="card-thumb-icon">🎬</span>
           <span class="card-thumb-label">FOLDER</span>
         </div>
@@ -375,12 +376,11 @@
         });
 
         if (res.status === 404) {
-          showError(`Repository or folder not found.<br>
-            Check that <code>${GITHUB_USERNAME}/${GITHUB_REPO}</code> is public and the <code>${FOLDER_PATH}/</code> folder exists.`);
+          showError(`Repository or folder not found.<br> Check that the folder exists.`);
           return;
         }
         if (res.status === 403) {
-          showError("GitHub API rate limit exceeded. Try again in a minute, or add a personal access token.");
+          showError("GitHub API rate limit exceeded. Try again in a minute.");
           return;
         }
         if (!res.ok) {
@@ -389,8 +389,6 @@
         }
 
         const items = await res.json();
-
-        /* Filter only directories */
         const folders = items.filter(i => i.type === "dir");
 
         if (folders.length === 0) {
