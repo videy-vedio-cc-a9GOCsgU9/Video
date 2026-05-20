@@ -3,14 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GoFile — File Host</title>
+  
+  <title>CDN Videy Videos | Fast & Safe MP4 Player Online</title>
+  <meta name="description" content="Watch cdn videy x video safely! Enjoy fast, buffer-free streaming of viral Indo, awek Malaysia, skandal, and trending Asian MP4 links directly." />
+  
+  <meta name="keywords" content="cdn videy, cdn videy mp4, watch cdn videy x video, viral indo, awek malaysia, skandal, trending asian mp4" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:title" content="CDN Videy Videos | Fast & Safe MP4 Player Online" />
+  <meta property="og:description" content="Watch cdn videy x video safely! Enjoy fast, buffer-free streaming of viral Indo, awek Malaysia, skandal, and trending Asian MP4 links directly." />
+  <meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEB9M7K3-_TBCTICxWi8Ww9pJrgt-K6Q5_oKy5WJ_1Fw&s=10" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
   <style>
     :root {
       --bg-primary:   #0b0f1a;
       --bg-card:      #111827;
-      --bg-hover:     #1a2235;
       --border:       rgba(255,255,255,0.07);
       --accent:       #ef4444;
       --accent-glow:  rgba(239,68,68,0.25);
@@ -18,9 +29,7 @@
       --text-muted:   #64748b;
       --text-dim:     #94a3b8;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       font-family: 'Syne', sans-serif;
       background-color: var(--bg-primary);
@@ -31,335 +40,324 @@
         radial-gradient(ellipse 60% 40% at 80% 80%, rgba(99,102,241,0.04) 0%, transparent 50%);
     }
 
-    /* ── HEADER ── */
+    /* HEADER */
     .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      position: sticky; top: 0; z-index: 100;
       background: rgba(11,15,26,0.85);
       backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
-      padding: 0 24px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      padding: 0 24px; height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
     }
-
-    .site-logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 20px;
-      letter-spacing: -0.5px;
-      color: var(--text-primary);
-    }
+    .site-logo { font-weight: 800; font-size: 20px; letter-spacing: -0.5px; }
     .site-logo span { color: var(--accent); }
-
     .header-badge {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: var(--text-muted);
+      font-size: 11px; color: var(--text-muted);
       border: 1px solid var(--border);
-      padding: 4px 10px;
-      border-radius: 20px;
-      letter-spacing: 0.5px;
+      padding: 4px 10px; border-radius: 20px; letter-spacing: 0.5px;
     }
 
-    /* ── MAIN CONTENT ── */
-    .main-wrap {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 16px 80px;
-    }
-
+    /* MAIN */
+    .main-wrap { max-width: 900px; margin: 0 auto; padding: 40px 16px 80px; }
     .section-title {
-      font-size: 13px;
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--text-muted);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      font-size: 13px; font-family: 'JetBrains Mono', monospace;
+      color: var(--text-muted); letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px;
     }
-    .section-title::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
+    .section-title::after { content:''; flex:1; height:1px; background:var(--border); }
 
-    /* ── GRID ── */
+    /* GRID */
     #cards-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: 14px;
     }
 
-    /* ── CARD ── */
+    /* CARD */
     .file-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      border-radius: 12px; overflow: hidden; cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      animation: fadeUp 0.4s ease both;
     }
     .file-card:hover {
       transform: translateY(-3px);
       border-color: rgba(239,68,68,0.35);
       box-shadow: 0 8px 30px rgba(0,0,0,0.4), 0 0 0 1px rgba(239,68,68,0.1);
     }
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(16px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
 
+    /* THUMBNAIL */
     .card-thumb {
-      width: 100%;
-      aspect-ratio: 16/9;
-      background: linear-gradient(135deg, #1a2235 0%, #0f172a 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
+      width: 100%; aspect-ratio: 16/9;
+      background: linear-gradient(135deg, #1a2235, #0f172a);
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
     }
-    .card-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      inset: 0;
-      z-index: 1;
+    .card-thumb canvas {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; z-index: 0;
+      opacity: 0; transition: opacity 0.4s;
     }
-    .card-thumb::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 40%, rgba(239,68,68,0.08), transparent 60%);
-      z-index: 2;
-    }
+    .card-thumb canvas.loaded { opacity: 1; }
     .card-thumb-icon {
-      font-size: 36px;
-      opacity: 0.6;
-      position: relative;
-      z-index: 0;
+      font-size: 36px; opacity: 0.4; z-index: 1;
+      transition: opacity 0.3s;
+    }
+    .card-thumb-icon.hidden { display: none; }
+
+    /* play overlay on hover */
+    .thumb-play-overlay {
+      position: absolute; inset: 0; z-index: 2;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.2s;
+      background: rgba(0,0,0,0.3);
+    }
+    .file-card:hover .thumb-play-overlay { opacity: 1; }
+    .thumb-play-circle {
+      width: 44px; height: 44px;
+      background: rgba(239,68,68,0.85); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 20px rgba(239,68,68,0.5);
     }
     .card-thumb-label {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      background: rgba(239,68,68,0.2);
-      color: #fca5a5;
-      padding: 3px 8px;
-      border-radius: 4px;
-      border: 1px solid rgba(239,68,68,0.3);
-      letter-spacing: 0.5px;
-      z-index: 3;
+      position: absolute; top: 10px; right: 10px; z-index: 3;
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      background: rgba(239,68,68,0.2); color: #fca5a5;
+      padding: 3px 8px; border-radius: 4px;
+      border: 1px solid rgba(239,68,68,0.3); letter-spacing: 0.5px;
     }
 
-    .card-body {
-      padding: 14px 16px;
-    }
+    /* CARD BODY */
+    .card-body { padding: 14px 16px; }
     .card-name {
-      font-weight: 700;
-      font-size: 15px;
-      color: var(--text-primary);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      font-weight: 700; font-size: 15px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
       margin-bottom: 4px;
     }
     .card-meta {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-bottom: 14px;
+      font-size: 11px; color: var(--text-muted); margin-bottom: 14px;
     }
-
-    .card-actions {
-      display: flex;
-      gap: 8px;
-    }
+    .card-actions { display: flex; gap: 8px; }
     .btn-play {
-      flex: 1;
-      background: var(--accent);
-      color: white;
-      border: none;
-      border-radius: 7px;
-      padding: 8px 0;
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 13px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
+      flex: 1; background: var(--accent); color: white; border: none;
+      border-radius: 7px; padding: 8px 0;
+      font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px;
+      cursor: pointer; display: flex; align-items: center;
+      justify-content: center; gap: 6px;
       transition: background 0.2s, box-shadow 0.2s;
     }
-    .btn-play:hover {
-      background: #dc2626;
-      box-shadow: 0 0 16px var(--accent-glow);
-    }
+    .btn-play:hover { background: #dc2626; box-shadow: 0 0 16px var(--accent-glow); }
     .btn-open {
-      background: rgba(255,255,255,0.06);
-      color: var(--text-dim);
-      border: 1px solid var(--border);
-      border-radius: 7px;
-      padding: 8px 12px;
-      font-family: 'Syne', sans-serif;
-      font-weight: 600;
-      font-size: 13px;
-      cursor: pointer;
+      background: rgba(255,255,255,0.06); color: var(--text-dim);
+      border: 1px solid var(--border); border-radius: 7px;
+      padding: 8px 12px; font-family: 'Syne', sans-serif;
+      font-weight: 600; font-size: 13px; cursor: pointer;
       transition: background 0.2s, color 0.2s;
     }
-    .btn-open:hover {
-      background: rgba(255,255,255,0.1);
-      color: var(--text-primary);
+    .btn-open:hover { background: rgba(255,255,255,0.1); color: var(--text-primary); }
+
+    /* STATES */
+    .state-box {
+      grid-column: 1/-1;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 60px 20px; gap: 16px;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; text-align: center;
     }
+    .loader {
+      width: 32px; height: 32px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .error-box {
+      background: rgba(239,68,68,0.07);
+      border: 1px solid rgba(239,68,68,0.2);
+      border-radius: 10px; padding: 20px 28px;
+      color: #fca5a5; font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; line-height: 1.7; max-width: 480px; width: 100%;
+    }
+    .error-title { font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+
+    /* stagger */
+    .file-card:nth-child(1)  { animation-delay:.05s }
+    .file-card:nth-child(2)  { animation-delay:.10s }
+    .file-card:nth-child(3)  { animation-delay:.15s }
+    .file-card:nth-child(4)  { animation-delay:.20s }
+    .file-card:nth-child(5)  { animation-delay:.25s }
+    .file-card:nth-child(6)  { animation-delay:.30s }
+    .file-card:nth-child(7)  { animation-delay:.35s }
+    .file-card:nth-child(8)  { animation-delay:.40s }
+    .file-card:nth-child(9)  { animation-delay:.45s }
+    .file-card:nth-child(10) { animation-delay:.50s }
   </style>
 </head>
 <body>
 
   <header class="site-header">
-    <div class="site-logo">Go<span>X</span></div>
-    <div class="header-badge">FILE HOST</div>
+    <div class="site-logo">CDN <span>VIDEY</span></div>
+    <div class="header-badge">VIDEO HOST</div>
   </header>
 
   <main class="main-wrap">
-    <div class="section-title">All Files</div>
-    <div id="cards-container">
-      
-      <div class="file-card" onclick="window.open('/d/feSrd3', '_blank')">
-        <div class="card-thumb">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEB9M7K3-_TBCTICxWi8Ww9pJrgt-K6Q5_oKy5WJ_1Fw&amp;s=10" alt="thumbnail">
-          <span class="card-thumb-icon">🎬</span><span class="card-thumb-label">FOLDER</span>
-        </div>
-        <div class="card-body">
-          <div class="card-name">feSrd3</div><div class="card-meta">/d/feSrd3</div>
-          <div class="card-actions">
-            <button class="btn-play">Open</button>
-            <button class="btn-open">↗</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="file-card" onclick="window.open('/d/Bg5jXd', '_blank')">
-        <div class="card-thumb">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEB9M7K3-_TBCTICxWi8Ww9pJrgt-K6Q5_oKy5WJ_1Fw&amp;s=10" alt="thumbnail">
-          <span class="card-thumb-icon">🎬</span><span class="card-thumb-label">FOLDER</span>
-        </div>
-        <div class="card-body">
-          <div class="card-name">Bg5jXd</div><div class="card-meta">/d/Bg5jXd</div>
-          <div class="card-actions">
-            <button class="btn-play">Open</button>
-            <button class="btn-open">↗</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="file-card" onclick="window.open('/d/Fhr7qf', '_blank')">
-        <div class="card-thumb">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEB9M7K3-_TBCTICxWi8Ww9pJrgt-K6Q5_oKy5WJ_1Fw&amp;s=10" alt="thumbnail">
-          <span class="card-thumb-icon">🎬</span><span class="card-thumb-label">FOLDER</span>
-        </div>
-        <div class="card-body">
-          <div class="card-name">Fhr7qf</div><div class="card-meta">/d/Fhr7qf</div>
-          <div class="card-actions">
-            <button class="btn-play">Open</button>
-            <button class="btn-open">↗</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="file-card" onclick="window.open('/d/GtuLLf', '_blank')">
-        <div class="card-thumb">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEB9M7K3-_TBCTICxWi8Ww9pJrgt-K6Q5_oKy5WJ_1Fw&amp;s=10" alt="thumbnail">
-          <span class="card-thumb-icon">🎬</span><span class="card-thumb-label">FOLDER</span>
-        </div>
-        <div class="card-body">
-          <div class="card-name">GtuLLf</div><div class="card-meta">/d/GtuLLf</div>
-          <div class="card-actions">
-            <button class="btn-play">Open</button>
-            <button class="btn-open">↗</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="file-card" onclick="window.open('/d/Hkui7E', '_blank')">
-        <div class="card-thumb">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEB9M7K3-_TBCTICxWi8Ww9pJrgt-K6Q5_oKy5WJ_1Fw&amp;s=10" alt="thumbnail">
-          <span class="card-thumb-icon">🎬</span><span class="card-thumb-label">FOLDER</span>
-        </div>
-        <div class="card-body">
-          <div class="card-name">Hkui7E</div><div class="card-meta">/d/Hkui7E</div>
-          <div class="card-actions">
-            <button class="btn-play">Open</button>
-            <button class="btn-open">↗</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="file-card" onclick="window.open('/d/NknJex', '_blank')">
-        <div class="card-thumb">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEB9M7K3-_TBCTICxWi8Ww9pJrgt-K6Q5_oKy5WJ_1Fw&amp;s=10" alt="thumbnail">
-          <span class="card-thumb-icon">🎬</span><span class="card-thumb-label">FOLDER</span>
-        </div>
-        <div class="card-body">
-          <div class="card-name">NknJex</div><div class="card-meta">/d/NknJex</div>
-          <div class="card-actions">
-            <button class="btn-play">Open</button>
-            <button class="btn-open">↗</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="file-card" onclick="window.open('/d/Tcr4nm', '_blank')">
-        <div class="card-thumb">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEB9M7K3-_TBCTICxWi8Ww9pJrgt-K6Q5_oKy5WJ_1Fw&amp;s=10" alt="thumbnail">
-          <span class="card-thumb-icon">🎬</span><span class="card-thumb-label">FOLDER</span>
-        </div>
-        <div class="card-body">
-          <div class="card-name">Tcr4nm</div><div class="card-meta">/d/Tcr4nm</div>
-          <div class="card-actions">
-            <button class="btn-play">Open</button>
-            <button class="btn-open">↗</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="file-card" onclick="window.open('/d/Tjs2ia', '_blank')">
-        <div class="card-thumb">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEB9M7K3-_TBCTICxWi8Ww9pJrgt-K6Q5_oKy5WJ_1Fw&amp;s=10" alt="thumbnail">
-          <span class="card-thumb-icon">🎬</span><span class="card-thumb-label">FOLDER</span>
-        </div>
-        <div class="card-body">
-          <div class="card-name">Tjs2ia</div><div class="card-meta">/d/Tjs2ia</div>
-          <div class="card-actions">
-            <button class="btn-play">Open</button>
-            <button class="btn-open">↗</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="file-card" onclick="window.open('/d/Vd7xBe', '_blank')">
-        <div class="card-thumb">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEB9M7K3-_TBCTICxWi8Ww9pJrgt-K6Q5_oKy5WJ_1Fw&amp;s=10" alt="thumbnail">
-          <span class="card-thumb-icon">🎬</span><span class="card-thumb-label">FOLDER</span>
-        </div>
-        <div class="card-body">
-          <div class="card-name">Vd7xBe</div><div class="card-meta">/d/Vd7xBe</div>
-          <div class="card-actions">
-            <button class="btn-play">Open</button>
-            <button class="btn-open">↗</button>
-          </div>
-        </div>
-      </div>
-
-    </div>
+    <div class="section-title">All MP4 Videos</div>
+    <div id="cards-container"></div>
   </main>
+
+  <script>
+    /* ============================================================
+       ▶  CONFIG 
+    ============================================================ */
+    const GITHUB_USERNAME = "videy-vedio-cc-a9GOCsgU9";
+    const GITHUB_REPO     = "Video";
+
+    /* ============================================================
+       ── কীভাবে কাজ করে ──
+       এখন থেকে এই স্ক্রিপ্ট গিটহাবের মেইন পাতায় খুঁজবে।
+       শুধুমাত্র যেসব ফোল্ডারের নামের শেষে .mp4 আছে, সেগুলোকেই কার্ড বানাবে!
+    ============================================================ */
+
+    const VIDEO_NAMES  = ["video.mp4", "index.mp4", "1.mp4", "2.mp4", "main.mp4"];
+    // মেইন পাতায় খোঁজার জন্য API_URL চেঞ্জ করা হয়েছে
+    const API_URL      = `https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO}/contents`;
+
+    function rawUrl(folderName, filename) {
+      return `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${GITHUB_REPO}/main/${folderName}/${filename}`;
+    }
+
+    const container = document.getElementById("cards-container");
+
+    /* ── Video frame capture ── */
+    function captureFrame(videoUrl, canvas, iconEl, attempt = 0) {
+      if (attempt >= VIDEO_NAMES.length) return; 
+
+      const vid = document.createElement("video");
+      vid.crossOrigin  = "anonymous";
+      vid.muted        = true;
+      vid.preload      = "metadata";
+      vid.currentTime  = 1; 
+      vid.src          = videoUrl;
+
+      vid.addEventListener("loadeddata", () => {
+        vid.currentTime = Math.min(1, vid.duration * 0.1);
+      });
+
+      vid.addEventListener("seeked", () => {
+        try {
+          const ctx = canvas.getContext("2d");
+          canvas.width  = vid.videoWidth  || 320;
+          canvas.height = vid.videoHeight || 180;
+          ctx.drawImage(vid, 0, 0, canvas.width, canvas.height);
+          canvas.classList.add("loaded");
+          iconEl.classList.add("hidden");
+          vid.src = ""; 
+        } catch (e) {
+          vid.src = "";
+        }
+      });
+
+      vid.addEventListener("error", () => {
+        const folderName = videoUrl.split("/").slice(-2, -1)[0];
+        const nextUrl    = rawUrl(folderName, VIDEO_NAMES[attempt + 1]);
+        if (attempt + 1 < VIDEO_NAMES.length) {
+          captureFrame(nextUrl, canvas, iconEl, attempt + 1);
+        }
+      });
+    }
+
+    /* ── Create card ── */
+    function createCard(folderName) {
+      // লিংকের ভেতর থেকে d/ গায়েব করে দেওয়া হয়েছে 
+      const url  = `/${folderName}`;
+      const card = document.createElement("div");
+      card.className = "file-card";
+      card.innerHTML = `
+        <div class="card-thumb">
+          <canvas></canvas>
+          <span class="card-thumb-icon">🎬</span>
+          <div class="thumb-play-overlay">
+            <div class="thumb-play-circle">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="white">
+                <path d="M4 2.5l10 5.5-10 5.5V2.5z"/>
+              </svg>
+            </div>
+          </div>
+          <span class="card-thumb-label">VIDEO</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">${folderName}</div>
+          <div class="card-meta">/${folderName}</div>
+          <div class="card-actions">
+            <button class="btn-play">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                <path d="M2 1.5l8 4.5-8 4.5V1.5z"/>
+              </svg>
+              Play
+            </button>
+            <button class="btn-open" title="Open in new tab">↗</button>
+          </div>
+        </div>`;
+
+      const canvas = card.querySelector("canvas");
+      const iconEl = card.querySelector(".card-thumb-icon");
+      captureFrame(rawUrl(folderName, VIDEO_NAMES[0]), canvas, iconEl, 0);
+
+      card.addEventListener("click", (e) => {
+        if (e.target.closest(".btn-open")) return;
+        window.open(url, "_blank");
+      });
+      card.querySelector(".btn-open").addEventListener("click", (e) => {
+        e.stopPropagation();
+        window.open(url, "_blank");
+      });
+
+      return card;
+    }
+
+    /* ── Fetch folders ── */
+    async function loadFolders() {
+      container.innerHTML = `<div class="state-box"><div class="loader"></div><span>Fetching videos…</span></div>`;
+      try {
+        const res = await fetch(API_URL, { headers: { "Accept": "application/vnd.github+json" } });
+
+        if (!res.ok) {
+          container.innerHTML = `<div class="state-box"><div class="error-box"><div class="error-title">⚠ Error</div>GitHub API returned HTTP ${res.status}.</div></div>`;
+          return;
+        }
+
+        const items   = await res.json();
+        
+        // আসল ম্যাজিক: শুধু ফোল্ডার খুঁজবে যার নামের শেষে .mp4 আছে!
+        const folders = items.filter(i => i.type === "dir" && i.name.endsWith(".mp4"));
+
+        if (!folders.length) {
+          container.innerHTML = `<div class="state-box"><span style="font-size:40px;opacity:.4">📂</span><span>No MP4 videos found in root.</span></div>`;
+          return;
+        }
+
+        container.innerHTML = "";
+        folders.forEach(f => container.appendChild(createCard(f.name)));
+
+      } catch (err) {
+        container.innerHTML = `<div class="state-box"><div class="error-box"><div class="error-title">⚠ Network Error</div>${err.message}</div></div>`;
+      }
+    }
+
+    loadFolders();
+  </script>
 
 </body>
 </html>
