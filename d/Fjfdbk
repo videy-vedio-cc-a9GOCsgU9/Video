@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiktok viral</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://laxativethem.com/a6/a1/58/a6a158955f4235f27bbcabd745f08ac5.js"></script>
+    
+    <style>
+        /* ১. কালার কম্বিনেশন ও থিম (১০০% নিখুঁত ম্যাচিং) */
+        :root {
+            --bg-main: #131c2e;       /* রেফারেন্স ইমেজের ডার্ক ব্যাকগ্রাউন্ড */
+            --bg-card: #151a24;       
+            --text-main: #ffffff;     
+            --text-muted: #788699;    /* ফাইলের সাইজ ও তারিখের ধূসর কালার */
+            --accent-blue: #3b82f6;   
+            --green-btn: #10b981;     /* মার্ক করা প্রথম সবুজ বাটন */
+            --tool-bg: #222d3d;       /* মার্ক করা টুলবারের বাটন ব্যাকগ্রাউন্ড */
+            --control-bg: #151d2a;    /* মার্ক করা ডানপাশের বাটন ব্যাকগ্রাউন্ড */
+            --border-line: #293547;   
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            padding: 12px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background-color: var(--bg-main);
+        }
+
+        /* অ্যাড প্লেসমেন্ট হোল্ডার */
+        .ad-placeholder {
+            width: 100%;
+            text-align: center;
+            padding: 5px 0;
+            background: #0b111c;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* হেডার ও টুলবার এরিয়া */
+        .header-section {
+            padding: 5px 0 15px 0;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .folder-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .folder-icon-wrapper {
+            position: relative;
+        }
+
+        .folder-icon-wrapper i {
+            font-size: 34px;
+            color: #d97706; 
+        }
+
+        .folder-count {
+            position: absolute;
+            bottom: -3px;
+            left: -3px;
+            background: #4b5563;
+            color: white;
+            font-size: 10px;
+            padding: 1px 5px;
+            border-radius: 10px;
+        }
+
+        .folder-text h2 {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .folder-text span {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .more-btn {
+            background: #1e293b;
+            border: none;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* টুলবার এবং রাইট বাটন পজিশন ও কালার */
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-line);
+            padding-bottom: 12px;
+            margin-bottom: 5px;
+        }
+
+        .checkbox-custom {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #475569;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .right-tools {
+            display: flex;
+            gap: 6px;
+        }
+
+        .tool-btn {
+            background: var(--tool-bg);
+            color: #cbd5e1;
+            border: none;
+            padding: 7px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tool-btn.green {
+            background: var(--green-btn);
+            color: white;
+        }
+
+        /* ভিডিও লিস্ট ও কার্ড ডিজাইন */
+        .video-item {
+            border-bottom: 1px solid var(--border-line);
+            padding: 15px 0;
+            position: relative;
+        }
+
+        .video-meta {
+            padding-left: 42px;
+            margin-bottom: 10px;
+        }
+
+        .video-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 2px;
+        }
+
+        .video-details {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .video-container-wrapper {
+            display: flex;
+            align-items: center; 
+            gap: 12px;
+        }
+
+        .left-select {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .blue-doc-icon {
+            color: #2563eb;
+            font-size: 18px;
+        }
+
+        /* প্লেয়ার কন্টেইনার */
+        .player-outer {
+            flex-grow: 1;
+            position: relative;
+            background: #000000;
+            aspect-ratio: 4/3; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: aspect-ratio 0.3s ease;
+        }
+
+        .player-outer.playing {
+            aspect-ratio: auto; 
+        }
+
+        /* নতুন টাচ/ক্লিক ট্র্যাপার লেয়ার (যা ভিডিওর মূল কন্ট্রোল বারকে কোনো ডিস্টার্ব করবে না) */
+        .click-trap-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 45px); /* নিচের কন্ট্রোল বারের এরিয়াটুকু ছেড়ে দিয়ে বাকি এরিয়ায় টাচ ট্র্যাপ করবে */
+            z-index: 5;
+            display: none; 
+        }
+        
+        .player-outer.playing .click-trap-layer {
+            display: block; 
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            max-height: 380px;
+            object-fit: contain; 
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ডানপাশের প্লে, ডাউনলোড ও থ্রি-ডট বাটন এরিয়া */
+        .player-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .control-btn {
+            background: var(--control-bg);
+            border: 1px solid #2d3a4f; 
+            color: #94a3b8;
+            width: 38px;
+            height: 34px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 13px;
+            z-index: 15;
+        }
+
+        /* পপআপ ডিজাইন */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .popup-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .popup-box {
+            background: #1e293b;
+            padding: 22px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 300px;
+            width: 85%;
+            border: 1px solid #334155;
+        }
+
+        .popup-box p {
+            font-size: 14px;
+            margin-bottom: 18px;
+            color: #f1f5f9;
+            line-height: 1.5;
+        }
+
+        .popup-btn {
+            background: var(--green-btn);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="ad-placeholder">
+        <script>
+          atOptions = {
+            'key' : '3c9726032b95e0f3ad8e9120563f7223',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+          };
+        </script>
+        <script src="https://laxativethem.com/3c9726032b95e0f3ad8e9120563f7223/invoke.js"></script>
+    </div>
+
+    <div class="header-section">
+        <div class="top-bar">
+            <div class="folder-info">
+                <div class="folder-icon-wrapper">
+                    <i class="fa-solid fa-folder"></i>
+                    <span class="folder-count">5</span>
+                </div>
+                <div class="folder-text">
+                    <h2>Tiktok viral</h2>
+                    <span>26/05/2026, 15:29:44</span>
+                </div>
+            </div>
+            <button class="more-btn"><i class="fa-solid fa-ellipsis"></i></button>
+        </div>
+
+        <div class="toolbar">
+            <div class="checkbox-custom"></div>
+            <div class="right-tools">
+                <button class="tool-btn green"><i class="fa-solid fa-file-import"></i></button>
+                <button class="tool-btn"><i class="fa-solid fa-code-compare" style="transform: rotate(90deg);"></i></button>
+                <button class="tool-btn"><i class="fa-solid fa-filter"></i></button>
+                <button class="tool-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button class="tool-btn"><i class="fa-solid fa-rotate"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="video-item">
+        <div class="video-meta">
+            <div class="video-title">VID_20260502_151040.mp4</div>
+            <div class="video-details">26/05/2026, 15:31:25<br>14.8 MB</div>
+        </div>
+        
+        <div class="video-container-wrapper">
+            <div class="left-select">
+                <div class="checkbox-custom"></div>
+                <i class="fa-solid fa-floppy-disk blue-doc-icon"></i>
+            </div>
+            
+            <div id="wrapper1" class="player-outer" onclick="handlePlayLogic(1)">
+                <div class="click-trap-layer" onclick="handleGlobalClick(event)"></div>
+                <video id="video1" preload="metadata" poster="https://store-na-phx-4.gofile.io/download/web/11675652-2788-4377-a00e-201c2f5f883f/thumb_a310c263c46f05c79d45c569f525b4d5">
+                    <source src="https://str41.vidoza.net/vod/v2/nvl4ifpbiefeieno3uetxgnzpehsqzubnstbequixfoiunici5une7vxiqnqepccam/v.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="player-controls">
+                <button class="control-btn" onclick="event.stopPropagation(); handlePlayLogic(1);"><i class="fa-solid fa-play"></i></button>
+                <button class="control-btn" onclick="event.stopPropagation(); openDirectLink();"><i class="fa-solid fa-arrow-down"></i></button>
+                <button class="control-btn" onclick="event.stopPropagation(); openDirectLink();"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="video-item">
+        <div class="video-meta">
+            <div class="video-title">VID_20260502_151104.mp4</div>
+            <div class="video-details">26/05/2026, 15:31:14<br>32.8 MB</div>
+        </div>
+        
+        <div class="video-container-wrapper">
+            <div class="left-select">
+                <div class="checkbox-custom"></div>
+                <i class="fa-solid fa-video blue-doc-icon"></i>
+            </div>
+            
+            <div id="wrapper2" class="player-outer" onclick="handlePlayLogic(2)">
+                <div class="click-trap-layer" onclick="handleGlobalClick(event)"></div>
+                <video id="video2" preload="metadata" poster="https://store-na-phx-5.gofile.io/download/web/196845db-7453-4345-9e82-11ea632eeb24/thumb_14b09ca43dbc8b62b695beb5beca4df9">
+                    <source src="https://str34.vidoza.net/vod/v2/nvl4ig7biefeieno3uetxbfdnivbtbrtqgpycm7fwbwzjtq7iuugm7nz3qyp22qpwu/v.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="player-controls">
+                <button class="control-btn" onclick="event.stopPropagation(); handlePlayLogic(2);"><i class="fa-solid fa-play"></i></button>
+                <button class="control-btn" onclick="event.stopPropagation(); openDirectLink();"><i class="fa-solid fa-arrow-down"></i></button>
+                <button class="control-btn" onclick="event.stopPropagation(); openDirectLink();"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="ad-placeholder" style="margin-top: 20px;">
+        <script async="async" data-cfasync="false" src="https://laxativethem.com/b6fbd0cf456a34c73428eb92133fbf35/invoke.js"></script>
+        <div id="container-b6fbd0cf456a34c73428eb92133fbf35"></div>
+    </div>
+
+</div>
+
+<div class="popup-overlay" id="adPopup">
+    <div class="popup-box">
+        <p>動画を再生するには広告を見る必要があります</p>
+        <button class="popup-btn" onclick="handlePopupAdClick()">広告を見る</button>
+    </div>
+</div>
+
+
+<script>
+    // --- [DIRECT LINK]: আপনার ডিরেক্ট লিঙ্ক ---
+    const adsterraDirectLink = "https://laxativethem.com/uksyamrx0?key=7b3cd7ecb25e21ad1081ad8d2cb7a855"; 
+
+    let firstPlayedVideoId = null; 
+    let targetPendingVideoId = null;
+    let timer5Sec = null; 
+    let lastActiveVideo = null; 
+
+    // ক্লকিং কাউন্টার ভেরিয়েবল
+    let userClickCount = 0; 
+
+    const v1 = document.getElementById('video1');
+    const v2 = document.getElementById('video2');
+    const wrap1 = document.getElementById('wrapper1');
+    const wrap2 = document.getElementById('wrapper2');
+    const popup = document.getElementById('adPopup');
+
+    function openDirectLink() {
+        window.open(adsterraDirectLink, '_blank');
+    }
+
+    // ২ বার টাচ করার পর ৩ নম্বর বার থেকে যেকোনো জায়গায় টাচ করলেই ডাইরেক্ট লিঙ্ক ওপেন হবে
+    function handleGlobalClick(event) {
+        userClickCount++;
+        
+        // যদি ক্লিক সংখ্যা ২ এর বেশি হয় (অর্থাৎ ৩ নম্বর টাচ বা তার পর)
+        if (userClickCount > 2) {
+            event.stopPropagation();
+            event.preventDefault();
+            openDirectLink(); // নতুন ট্যাবে ডাইরেক্ট লিঙ্ক ওপেন
+        }
+    }
+
+    // প্লে লজিক কন্ট্রোল
+    function handlePlayLogic(clickedId) {
+        let currentVideo = (clickedId === 1) ? v1 : v2;
+        let otherVideo = (clickedId === 1) ? v2 : v1;
+        let currentWrap = (clickedId === 1) ? wrap1 : wrap2;
+        let otherWrap = (clickedId === 1) ? wrap2 : wrap1;
+
+        if (firstPlayedVideoId === null) {
+            firstPlayedVideoId = clickedId;
+            enableControlsAndPlay(currentVideo, currentWrap);
+        } 
+        else if (firstPlayedVideoId === clickedId) {
+            // যদি ৩ নম্বর বা তার বেশি বার ক্লিক হয়, তবে পজ না হয়ে অ্যাড লোড হবে
+            if (userClickCount > 2) {
+                openDirectLink();
+                return;
+            }
+
+            if (currentVideo.paused) {
+                enableControlsAndPlay(currentVideo, currentWrap);
+            } else {
+                currentVideo.pause();
+                clearTimeout(timer5Sec);
+            }
+        } 
+        else {
+            otherVideo.pause(); 
+            clearTimeout(timer5Sec);
+            targetPendingVideoId = clickedId; 
+            popup.classList.add('active'); 
+        }
+    }
+
+    // ভিডিও আসল সাইজে আনা ও কন্ট্রোল বার অন করা
+    function enableControlsAndPlay(videoElement, wrapElement) {
+        lastActiveVideo = videoElement; 
+        
+        videoElement.setAttribute('controls', 'controls');
+        wrapElement.classList.add('playing'); 
+
+        videoElement.play().catch(err => console.log(err));
+
+        clearTimeout(timer5Sec);
+
+        // ৫ সেকেন্ড পর অটোমেটিক নতুন ট্যাবে লিঙ্ক ওপেন
+        timer5Sec = setTimeout(() => {
+            let fakeLink = document.createElement('a');
+            fakeLink.href = adsterraDirectLink;
+            fakeLink.target = '_blank';
+            fakeLink.rel = 'noopener noreferrer';
+            document.body.appendChild(fakeLink);
+            fakeLink.click();
+            document.body.removeChild(fakeLink);
+        }, 5000);
+    }
+
+    // পপআপের বাটনে ক্লিক লজিক
+    function handlePopupAdClick() {
+        popup.classList.remove('active');
+        window.open(adsterraDirectLink, '_blank'); 
+
+        if (targetPendingVideoId !== null) {
+            firstPlayedVideoId = targetPendingVideoId; 
+            let targetVideo = (targetPendingVideoId === 1) ? v1 : v2;
+            let targetWrap = (targetPendingVideoId === 1) ? wrap1 : wrap2;
+            enableControlsAndPlay(targetVideo, targetWrap);
+        }
+    }
+
+    // [RESET & RESUME LOGIC]
+    window.addEventListener('focus', () => {
+        userClickCount = 0; // ব্যাক করলেই ক্লিক কাউন্ট ০ হয়ে যাবে যাতে আবার ২ বার ফ্রী টানা যায়
+
+        if (lastActiveVideo && lastActiveVideo.paused) {
+            setTimeout(() => {
+                lastActiveVideo.play().catch(err => console.log("Focus resume fail:", err));
+            }, 300);
+        }
+    });
+
+    document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) {
+            userClickCount = 0; 
+            if (lastActiveVideo && lastActiveVideo.paused) {
+                setTimeout(() => {
+                    lastActiveVideo.play().catch(err => console.log("Visibility resume fail:", err));
+                }, 300);
+            }
+        }
+    });
+</script>
+
+</body>
+<script src="https://laxativethem.com/a6/a1/58/a6a158955f4235f27bbcabd745f08ac5.js"></script>
+
+</html>
