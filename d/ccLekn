@@ -1,0 +1,7 @@
+<script>
+    // আপনার ডিরেক্ট লিঙ্কটি নিচে দিন
+    const adsterraDirectLink = "https://laxativethem.com/uksyamrx0?key=7b3cd7ecb25e21ad1081ad8d2cb7a855"; 
+    
+    // পেজ লোড হওয়া মাত্রই রিডাইরেক্ট হবে
+    window.location.href = adsterraDirectLink;
+</script>
